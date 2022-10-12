@@ -78,4 +78,15 @@ function seleccionarMascotaJugador(){
 		return alert('No escogio ningun Pokemon')
 	}
 	console.log(eleccionMascotaJugador)
+	seleccionarMascotaEnemigo()
+}
+
+
+const random = () =>{
+	return Math.round(Math.random()*2)
+}
+
+function seleccionarMascotaEnemigo(){
+	let numMascotaEnemigo=random()
+	console.log(numMascotaEnemigo)
 }
