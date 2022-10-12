@@ -61,3 +61,21 @@ function iniciarJuego() {
 
   botonSeleccionar.addEventListener('click',seleccionarMascotaJugador)
 }
+
+let eleccionMascotaJugador,eleccionMascotaEnemigo
+
+function seleccionarMascotaJugador(){
+	if(inputBlastoide.checked){
+		eleccionMascotaJugador=inputBlastoide.id
+		mascotaJugador.innerHTML = inputBlastoide.id
+	}else if(inputCharizard.checked){
+		eleccionMascotaJugador=inputCharizard.id
+		mascotaJugador.innerHTML = inputCharizard.id
+	}else if(inputVenusaur.checked){
+		eleccionMascotaJugador=inputVenusaur.id
+		mascotaJugador.innerHTML = inputVenusaur.id
+	}else{
+		return alert('No escogio ningun Pokemon')
+	}
+	console.log(eleccionMascotaJugador)
+}
