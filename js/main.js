@@ -89,4 +89,12 @@ const random = () =>{
 function seleccionarMascotaEnemigo(){
 	let numMascotaEnemigo=random()
 	console.log(numMascotaEnemigo)
+	if(numMascotaEnemigo==0){
+		mascotaEnemigo.innerHTML=pokemones[0].nombre
+	}else if(numMascotaEnemigo==1){
+		mascotaEnemigo.innerHTML=pokemones[1].nombre
+	}else if(numMascotaEnemigo==2){
+		mascotaEnemigo.innerHTML=pokemones[2].nombre
+	}
+	console.log(mascotaEnemigo.innerHTML)
 }
