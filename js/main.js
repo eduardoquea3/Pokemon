@@ -106,9 +106,9 @@ let mostrarAtaqueJugador
 
 function sacandoAtaques(){
 	for (let i = 0; i < pokemones.length; i++) {
-		if (pokemones[i]==eleccionMascotaJugador) {
-			for (let  i= 0; i<pokemones.ataques.length; i++) {
-				console.log(pokemones)
+		if (pokemones[i].nombre==eleccionMascotaJugador) {
+			for (let  i1= 0; i1<pokemones[i].ataques.length; i1++) {
+				console.log(pokemones[i].ataques[i1])
 				//contenedorAtaques.innerHTML += pokemones.ataques[i]
 			}
 		}
