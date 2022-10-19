@@ -3,7 +3,7 @@ img {
 }
 
 input:checked+label {
-  border: 2px solid #ccc;
+  border: 2px solid rgb(0, 0, 0);
 }
 
 input {
