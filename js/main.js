@@ -19,7 +19,7 @@ const mascotaEnemigo = document.getElementById('mascotaEnemigo')
 const ataquesDelEnemigo = document.getElementById('ataquesDelEnemigo')
 
 let pokemones=[]
-let opcionDePokemones
+let opcionPokemones
 let inputCharizard,inputBlastoide,inputVenusaur
 let eleccionMascotaJugador
 
@@ -55,47 +55,64 @@ venusaur.ataques.push(
 	)
 
 pokemones.push(charizard,blastoide,venusaur)
-console.log(pokemones)
+
+
 iniciarJuego()
 
-function iniciarJuego(){
+function iniciarJuego() {
 	seleccionarAtaque.style.display='none'
 	verMapa.style.display='none'
 
-	pokemones.forEach((pokemon) => {
-        opcionDePokemones = `
-        <input type="radio" name="mascota" id=${pokemon.nombre}/>
-        <label class="pokemones" for=${pokemon.nombre}>
-            <p>${pokemon.nombre}</p>
-            <img src=${pokemon.imagen} alt=${pokemon.nombre}>
-        </label>
-        `
-    contenedorDeTarjetas.innerHTML += opcionDePokemones
-
+	pokemones.forEach((pokemon)=>{
+		opcionPokemones=`
+		<input type="radio" name="mascota" id=${pokemon.nombre}>
+		<label class="mascota" for=${pokemon.nombre}>
+		<p>${pokemon.nombre}</p>
+		<img src=${pokemon.imagen} alt=${pokemon.nombre}>
+		</label>
+		`
+		contenedorDeTarjetas.innerHTML += opcionPokemones
+	})
 	inputBlastoide=document.getElementById('Blastoide')
 	inputCharizard=document.getElementById('Charizard')
 	inputVenusaur=document.getElementById('Venusaur')
-	})
-	botonSeleccionar.addEventListener('click',seleccionarMascotaJugador)
 }
 
-function seleccionarMascotaJugador(){
+botonSeleccionar.addEventListener('click',e=>{
 	if(inputBlastoide.checked){
 		mascotaJugador.innerHTML=inputBlastoide.id
 		eleccionMascotaJugador=inputBlastoide.id
 	}else if(inputCharizard.checked){
-		mascotaJugador.innerHTML=inputCharizard.id
-		eleccionMascotaJugador=inputCharizard.id
+		mascotaJugador.innerHTML=inputCharizard.id 
+		eleccionMascotaJugador=inputCharizard.id 
 	}else if(inputVenusaur.checked){
-		mascotaJugador.innerHTML=inputVenusaur.id
-		eleccionMascotaJugador=inputVenusaur.id
+		mascotaJugador.innerHTML=inputVenusaur.id 
+		eleccionMascotaJugador=inputVenusaur.id 
 	}else{
-		alert('Selecciona una mascota')
+		alert('No elegiste ninguna mascota')
 		return
 	}
+
+	sacandoAtaquesMascota(eleccionMascotaJugador)
+})
+let ataquesMascotaJugador
+function sacandoAtaquesMascota(eleccionMascotaJugador){
+	for(let i=0;i<pokemones.length;i++){
+		if(eleccionMascotaJugador==pokemones[i].nombre){
+			ataquesMascotaJugador=pokemones[i].ataques
+		}
+	}
+		console.log(ataquesMascotaJugador)
+	botones(ataquesMascotaJugador)
+}
+
+function botones(ataquesMascotaJugador){
 	seleccionarMascota.style.display='none'
-	
-	extraerAtaques(mascotaJugador)
-	verMapa.style.display='flex'
-	iniciarMapa()
+	seleccionarAtaque.style.display='flex'
+	ataquesMascotaJugador.forEach((ataque)=>{
+		let botonAtaque=`
+		<button id=${ataque.Id}>${ataque.Ataque}</button>
+		`
+		contenedorAtaques.innerHTML+=botonAtaque
+	})
 }
