@@ -111,7 +111,7 @@ function botones(ataquesMascotaJugador){
 	seleccionarAtaque.style.display='flex'
 	ataquesMascotaJugador.forEach((ataque)=>{
 		let botonAtaque=`
-		<button id=${ataque.Id}>${ataque.Ataque}</button>
+		<button class="boton" id=${ataque.Id}>${ataque.Ataque}</button>
 		`
 		contenedorAtaques.innerHTML+=botonAtaque
 	})

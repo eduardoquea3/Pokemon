@@ -24,7 +24,7 @@ input {
 	width: 100vw;
 	height: 10vh;
 	margin: 10px 0px;
-  font-size: 60px;
+  font-size: 300%;
   text-align: center;
   padding: auto;
 }
@@ -51,18 +51,23 @@ input {
 
 #seleccionarAtaque{
   width: 100vw;
-  height: 84vh;
+  min-height: 84vh;
+  max-height: 96vh;
 }
-
+#seleccionarAtaque h2{
+  text-align: center;
+}
 
 .boton{
   height: 50px;
   width: 50px;
 }
-
-#seleccionarMascota{
-  display: none;
+.tarjetaAtaques{
+  display: flex;
+  height: 40vmin;
+  width: 100vw;
 }
+
 
 #verMapa{
   display: none;
