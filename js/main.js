@@ -22,6 +22,8 @@ let pokemones=[]
 let opcionPokemones
 let inputCharizard,inputBlastoide,inputVenusaur
 let eleccionMascotaJugador
+let botonAgua,botonFuego,botonTierra,botones=[]
+let ordenAjugador=[],ordenAenemigo=[]
 
 class Pokemon {
   constructor (nombre,imagen,foto) {
@@ -56,6 +58,7 @@ venusaur.ataques.push(
 
 pokemones.push(charizard,blastoide,venusaur)
 
+const random =(num)=> Math.round(Math.random()*num)
 
 iniciarJuego()
 
@@ -93,8 +96,21 @@ botonSeleccionar.addEventListener('click',e=>{
 		return
 	}
 
+	eleccionMascotaEnemigo()
 	sacandoAtaquesMascota(eleccionMascotaJugador)
 })
+
+let ataquesMascotaEnemigo
+function eleccionMascotaEnemigo(){
+	let eleccion=random(pokemones.length-1)
+	for (let i = 0; i < pokemones.length; i++) {
+		if(eleccion==i){
+			mascotaEnemigo.innerHTML=pokemones[i].nombre
+			ataquesMascotaEnemigo=pokemones[i].ataques
+		}
+	}
+}
+
 let ataquesMascotaJugador
 function sacandoAtaquesMascota(eleccionMascotaJugador){
 	for(let i=0;i<pokemones.length;i++){
@@ -102,11 +118,10 @@ function sacandoAtaquesMascota(eleccionMascotaJugador){
 			ataquesMascotaJugador=pokemones[i].ataques
 		}
 	}
-		console.log(ataquesMascotaJugador)
-	botones(ataquesMascotaJugador)
+	MostrarBotones(ataquesMascotaJugador)
 }
 
-function botones(ataquesMascotaJugador){
+function MostrarBotones(ataquesMascotaJugador){
 	seleccionarMascota.style.display='none'
 	seleccionarAtaque.style.display='flex'
 	ataquesMascotaJugador.forEach((ataque)=>{
@@ -114,5 +129,34 @@ function botones(ataquesMascotaJugador){
 		<button class="boton" id=${ataque.Id}>${ataque.Ataque}</button>
 		`
 		contenedorAtaques.innerHTML+=botonAtaque
+	})
+	botonAgua=document.getElementById('boton-agua')
+	botonFuego=document.getElementById('boton-fuego')
+	botonTierra=document.getElementById('boton-tierra')
+	botones=document.querySelectorAll('.boton')
+
+	secuenciaAtaque()
+}
+
+function secuenciaAtaque() {
+    botones.forEach((boton)=>{
+		boton.addEventListener('click',(e)=>{
+		if (e.target.textContent === '🔥') {
+			ordenAjugador.push('FUEGO')
+			console.log(ordenAjugador)
+			boton.style.background = '#000000'   
+			boton.disabled = true
+		} else if (e.target.textContent === '💧') {
+			ordenAjugador.push('AGUA')
+			console.log(ordenAjugador)
+			boton.style.background = '#000000'
+			boton.disabled = true
+		} else {
+			ordenAjugador.push('TIERRA')
+			console.log(ordenAjugador)
+			boton.style.background = '#000000'
+			boton.disabled = true
+		}
+		})
 	})
 }
