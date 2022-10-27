@@ -1,0 +1,22 @@
+{
+  "name": "pokemon",
+  "version": "1.0.0",
+  "description": "Hola soy Eduardo y estoy empezando a programar con javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardoquea3/Pokemon.git"
+  },
+  "author": "Eduardo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardoquea3/Pokemon/issues"
+  },
+  "homepage": "https://github.com/eduardoquea3/Pokemon#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
