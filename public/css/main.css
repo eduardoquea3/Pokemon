@@ -1,0 +1,147 @@
+body{
+  background-color: rgb(213, 186, 76);
+}
+
+img {
+  width: 200px;
+}
+
+input:checked+label {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 5em;
+  background-color: rgba(96, 120, 200, 0.5);
+  -webkit-border-radius: 5em;
+  -moz-border-radius: 5em;
+  -ms-border-radius: 5em;
+  -o-border-radius: 5em;
+}
+
+input {
+  display: none;
+}
+
+.mascota {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  height: 25vh;
+  margin: 20px;
+}
+
+.titulo{
+	width: 100vw;
+	height: 10vh;
+	margin: 10px 0px;
+  font-size: 300%;
+  text-align: center;
+  padding: auto;
+}
+
+#seleccionarMascota{
+  height: 84vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#seleccionarMascota div{
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+}
+#seleccionarMascota h2{
+  font-size: 40px;
+}
+
+#seleccionarAtaque{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 84vh;
+  max-height: 96vh;
+}
+#seleccionarAtaque h2{
+  text-align: center;
+  font-size: 3em;
+}
+
+.boton{
+  height: 60px;
+  width: 100px;
+  margin: 50px;
+  background: #3182d4;
+  border: 0px;
+  border-radius: 5em;
+  -webkit-border-radius: 5em;
+  -moz-border-radius: 5em;
+  -ms-border-radius: 5em;
+  -o-border-radius: 5em;
+}
+.tarjetaAtaques{
+  display: flex;
+  height: 40vmin;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+.ataque{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  height: 40vh;
+}
+#mensajes{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto 30px auto;
+}
+
+#mensajes p{
+  padding: 10px;
+  font-size: 4em;
+  border: 2px black solid;
+  border-radius:1em;
+  -webkit-border-radius:1em;
+  -moz-border-radius:1em;
+  -ms-border-radius:1em;
+  -o-border-radius:1em;
+  margin-bottom: 15px;
+}
+
+#mensajes button{
+  font-size: 1.5em;
+  width: 100px;
+  height: 60px;
+}
+
+.ataque #ataquesJugador{
+  height: 50vmin;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ataque #ataquesEnemigo{
+  height: 50vmin;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#verMapa{
+  display: none;
+}
+

@@ -21,9 +21,13 @@ const ataquesDelEnemigo = document.getElementById('ataquesDelEnemigo')
 let pokemones=[]
 let opcionPokemones
 let inputCharizard,inputBlastoide,inputVenusaur
-let eleccionMascotaJugador
+let eleccionMascotaJugador,eleccionMascotaEnemigo
 let botonAgua,botonFuego,botonTierra,botones=[]
 let ordenAjugador=[],ordenAenemigo=[]
+let jugadorId = null
+let intervalo
+let ataquesMascotaEnemigo=[]
+let ataquesMascotaJugador=[]
 
 class Pokemon {
   constructor (nombre,imagen,foto) {
@@ -60,6 +64,8 @@ pokemones.push(charizard,blastoide,venusaur)
 
 const random =(num)=> Math.round(Math.random()*num)
 
+botonReiniciar.addEventListener('click',()=>{location.reload()})
+
 iniciarJuego()
 
 function iniciarJuego() {
@@ -95,23 +101,22 @@ botonSeleccionar.addEventListener('click',e=>{
 		alert('No elegiste ninguna mascota')
 		return
 	}
-
-	eleccionMascotaEnemigo()
-	sacandoAtaquesMascota(eleccionMascotaJugador)
+	seleccionMascotaEnemigo(eleccionMascotaJugador)
+	
 })
 
-let ataquesMascotaEnemigo
-function eleccionMascotaEnemigo(){
-	let eleccion=random(pokemones.length-1)
+
+function seleccionMascotaEnemigo(eleccionMascotaJugador){
+	eleccionMascotaEnemigo=random(pokemones.length-1)
 	for (let i = 0; i < pokemones.length; i++) {
-		if(eleccion==i){
+		if (eleccionMascotaEnemigo==i) {
 			mascotaEnemigo.innerHTML=pokemones[i].nombre
 			ataquesMascotaEnemigo=pokemones[i].ataques
 		}
 	}
+	sacandoAtaquesMascota(eleccionMascotaJugador)
 }
 
-let ataquesMascotaJugador
 function sacandoAtaquesMascota(eleccionMascotaJugador){
 	for(let i=0;i<pokemones.length;i++){
 		if(eleccionMascotaJugador==pokemones[i].nombre){
@@ -142,21 +147,61 @@ function secuenciaAtaque() {
     botones.forEach((boton)=>{
 		boton.addEventListener('click',(e)=>{
 		if (e.target.textContent === '🔥') {
-			ordenAjugador.push('FUEGO')
-			console.log(ordenAjugador)
-			boton.style.background = '#000000'   
+			ordenAjugador.push('🔥')
+			boton.style.background = '#5F6F94'   
 			boton.disabled = true
 		} else if (e.target.textContent === '💧') {
-			ordenAjugador.push('AGUA')
-			console.log(ordenAjugador)
-			boton.style.background = '#000000'
+			ordenAjugador.push('💧')
+			boton.style.background = '#5F6F94'
 			boton.disabled = true
 		} else {
-			ordenAjugador.push('TIERRA')
-			console.log(ordenAjugador)
-			boton.style.background = '#000000'
+			ordenAjugador.push('🌱')
+			boton.style.background = '#5F6F94'
 			boton.disabled = true
 		}
+		secuenciaEnemiga()
 		})
 	})
+}
+
+let i
+function secuenciaEnemiga(){
+	id=random(ataquesMascotaEnemigo.length-1)
+	ordenAenemigo.push(ataquesMascotaEnemigo[id].Ataque)
+	ataquesMascotaEnemigo.splice(id,1)
+	if(ordenAenemigo.length==4){
+		contenedorAtaques.style.display='none'
+		combate()
+	}
+}
+
+let victorias=0,derrotas=0,resultadoF
+
+function combate(){
+	for (let i = 0; i < ordenAjugador.length; i++) {
+		if(ordenAjugador[i]==ordenAenemigo[i]){
+			victorias=victorias
+			derrotas=derrotas
+		}else if((ordenAjugador[i]=='💧' && ordenAenemigo[i]=='🔥')||
+		(ordenAjugador[i]=='🌱' && ordenAenemigo[i]=='💧')||
+		(ordenAjugador[i]=='🔥' && ordenAenemigo[i]=='🌱')){
+			victorias+=1
+		}else{
+			derrotas+=1
+		}
+
+		ataquesDelJugador.innerHTML+=ordenAjugador[i]
+		ataquesDelEnemigo.innerHTML+=ordenAenemigo[i]
+	}
+	if(victorias<derrotas){
+		resultadoF='Perdiste'
+	}else if(victorias>derrotas){
+		resultadoF='Ganaste'
+	}else{
+		resultadoF='Empataron'
+	}
+
+	resultado.innerHTML=resultadoF
+	vidasJugador.innerHTML=victorias
+	vidasEnemigo.innerHTML=derrotas
 }

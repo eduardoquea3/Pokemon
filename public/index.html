@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokemon</title>
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/normalize.css">
@@ -23,10 +24,10 @@
   <section id='verMapa'>
     <h2>Recorre el mapa con tu pokemon</h2>
     <canvas id="canvas"></canvas>
-    <button onmouseup='detenerMovimiento()' onmousedown='moverArriva()'>Arriba</button>
-    <button onmouseup='detenerMovimiento()' onmousedown='moverIzquierda()'>Izquierda</button>
-    <button onmouseup='detenerMovimiento()' onmousedown='moverAbajo()'>Abajo</button>
-    <button onmouseup='detenerMovimiento()' onmousedown='moverDerecha()'>Derecha</button>
+    <button ontouched='detenermovimiento()' onmouseup='detenerMovimiento()' onmousedown='moverArriba()' ontouchstart='moverArriba()'>Arriba</button>
+    <button ontouched='detenermovimiento()' onmouseup='detenerMovimiento()' onmousedown='moverIzquierda()'ontouchstart='moverIzquierda()'>Izquierda</button>
+    <button ontouched='detenermovimiento()' onmouseup='detenerMovimiento()' onmousedown='moverAbajo()' ontouchstart='moverAbajo()'>Abajo</button>
+    <button ontouched='detenermovimiento()' onmouseup='detenerMovimiento()' onmousedown='moverDerecha()' ontouchstart='moverDerecha()'>Derecha</button>
   </section>
 
   <section id='seleccionarAtaque'>
@@ -39,7 +40,7 @@
       <p id='resultado'>Mucha suerte</p>
 
       <section id='reiniciar'>
-        <button id='botonReiniciar' onclick="location.reload()">Reiniciar</button>
+        <button id='botonReiniciar'>Reiniciar</button>
       </section>
     </div>
 
